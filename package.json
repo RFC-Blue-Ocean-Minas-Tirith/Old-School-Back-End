@@ -1,4 +1,12 @@
 {
+  "name": "old-school-back-end",
+  "scripts": {
+    "server-dev": "npx nodemon --watch server server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RFC-Blue-Ocean-Minas-Tirith/Old-School-Back-End.git"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
