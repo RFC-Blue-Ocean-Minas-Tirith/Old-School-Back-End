@@ -1,19 +1,23 @@
-/* eslint-disable prefer-destructuring */
+
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1/OldSchool', { useNewUrlParser: true, useUnifiedTopology: true });
+const Schema = mongoose.Schema;
+
+mongoose.connect('mongodb://127.0.0.1:27017/OldSchool', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.once("open", function() {
+  console.log("Connected to Database")
+});
 
-const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   objectID: Schema.Types.ObjectId,
   firstName: String,
   lastName: String,
   profilePicture: String,
-  username: { type: String, index: true },
+  username: { type: String, required: true, index: true },
   email: String,
   password: String,
   aboutMe: String,
@@ -24,7 +28,7 @@ const videoSchema = new Schema({
   objectID: Schema.Types.ObjectId,
   title: String,
   description: String,
-  username: { type: String, index: true },
+  username: { type: String, required: true, index: true },
   dateUploaded: Date,
   keywords: Array,
   comments: {
@@ -55,7 +59,7 @@ const blogSchema = new Schema({
   objectID: Schema.Types.ObjectId,
   title: String,
   description: String,
-  username: { type: String, index: true },
+  username: { type: String, required: true, index: true },
   dateUploaded: Date,
   keywords: Array,
   private: Boolean,
@@ -65,40 +69,8 @@ const UserData = mongoose.model('UserData', userSchema);
 const VideoData = mongoose.model('VideoData', videoSchema);
 const BlogData = mongoose.model('BlogData', blogSchema);
 
-const insertUser = async (userObj) => {
-  const newUser = new UserData({});
-  return newUser.save();
-};
 
-const insertVideo = async (videoObj) => {
-  const newVideo = new VideoData({});
-  return newVideo.save();
-};
 
-const insertBlog = async (blogObj) => {
-  const newBlog = new BlogData({});
-  return newBlog.save();
-};
-
-const findUser = async () => {
-  const allUsers = UserData.find({});
-  return allUsers;
-};
-
-const findVideos = async () => {
-  const allVideos = VideoData.find({});
-  return allVideos;
-};
-
-const findBlog = async () => {
-  const allBlogs = BlogData.find({});
-  return allBlogs;
-};
-
-module.exports.insertUser = insertUser;
-module.exports.insertVideo = insertVideo;
-module.exports.insertBlog = insertBlog;
-module.exports.findUser = findUser;
-module.exports.findVideos = findVideos;
-module.exports.findBlog = findBlog;
-module.exports.db = db;
+module.exports.UserData = UserData;
+module.exports.VideoData = VideoData;
+module.exports.BlogData = BlogData;
