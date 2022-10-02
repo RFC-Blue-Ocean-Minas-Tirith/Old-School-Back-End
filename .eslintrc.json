@@ -12,6 +12,8 @@
     "plugin:react/jsx-runtime"
 ],
   "rules": {
-
+    "no-console": "off",
+    "vars-on-top": "off",
+    "import/extensions": "never"
   }
 }
