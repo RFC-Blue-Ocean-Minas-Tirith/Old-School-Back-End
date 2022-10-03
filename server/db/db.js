@@ -22,6 +22,7 @@ const userSchema = new Schema({
   password: String,
   aboutMe: String,
   favCreator: Array,
+  favoritedCount: Number,
 });
 
 const videoSchema = new Schema({
@@ -40,15 +41,15 @@ const videoSchema = new Schema({
   url: String,
   votes: {
     insightful: {
-      usernames: [Array],
+      usernames: Array,
       count: Number,
     },
     funny: {
-      usernames: [Array],
+      usernames: Array,
       count: Number,
     },
     informative: {
-      usernames: [Array],
+      usernames: Array,
       count: Number,
     },
   },
