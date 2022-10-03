@@ -31,11 +31,11 @@ const videoSchema = new Schema({
   username: { type: String, required: true, index: true },
   dateUploaded: Date,
   keywords: Array,
-  comments: {
+  comments: [{
     id: Number,
     author: String,
     date: Date,
-  },
+  }],
   thumbnail: String,
   url: String,
   votes: {
