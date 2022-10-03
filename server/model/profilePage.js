@@ -6,5 +6,13 @@ module.exports = {
   },
   unFavorite: (currentUser, user ) => {
     return db.UserData.findOneAndUpdate({ username: currentUser.username }, { $pull: { favCreator: user.username } })
+  },
+
+  findVideosByUser: (username) => {
+    return db.VideoData.find({ username: username })
+  },
+
+  findBlogsByUser: (username) => {
+    return db.BlogData.find({ username: username })
   }
 }
