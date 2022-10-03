@@ -45,15 +45,12 @@ const videoSchema = new Schema({
   votes: {
     insightful: {
       usernames: Array,
-      count: Number,
     },
     funny: {
       usernames: Array,
-      count: Number,
     },
     informative: {
       usernames: Array,
-      count: Number,
     },
   },
   private: Boolean,
