@@ -14,5 +14,9 @@ module.exports = {
 
   findBlogsByUser: (username) => {
     return db.BlogData.find({ username: username })
+  },
+
+  findSpecUser: (username) => {
+    return db.UserData.findOne({ username: username })
   }
 }

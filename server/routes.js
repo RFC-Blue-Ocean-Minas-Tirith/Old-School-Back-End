@@ -7,6 +7,7 @@ var router = require('express').Router();
 
 
 router.get('/user', controller.getUser);
+router.get('/user/:username', profileController.getSpecUser);
 router.post('/user', controller.insertUser);
 
 router.put('/userprofile', profileController.favoriteUser);

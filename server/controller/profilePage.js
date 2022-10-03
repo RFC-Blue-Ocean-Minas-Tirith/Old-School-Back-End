@@ -26,5 +26,13 @@ module.exports = {
     return models.findBlogsByUser( username )
     .then((data) => res.status(200).send(data))
     .catch((err) => res.send(err));
+  },
+
+  getSpecUser: function (req, res) {
+    let username = req.url.slice(6, req.url.length)
+    console.log(username);
+    return models.findSpecUser( username )
+    .then((data) => { console.log(data); res.status(200).send(data)})
+    .catch((err) => res.send(err));
   }
 }
