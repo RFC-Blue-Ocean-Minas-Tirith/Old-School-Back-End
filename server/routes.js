@@ -1,5 +1,6 @@
 var controller = require('./controller/index');
 var landingpage = require('./controller/landingPage');
+var videopage = require('./controller/videoPage.js');
 var router = require('express').Router();
 
 
@@ -12,6 +13,7 @@ router.get('/video/funny', landingpage.getVideoFunny);
 router.get('/video/informative', landingpage.getVideoInformative);
 router.get('/video/recent', landingpage.getVideoRecent);
 router.get('/video/favorited', landingpage.getVideoFavorited);
+router.put('/video/vote', videopage.vote)
 
 router.post('/video', controller.insertVideo);
 
