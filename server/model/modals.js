@@ -6,7 +6,7 @@ module.exports = {
       { $push : {
         comments: {
           author: commentObj.username,
-          'comment': commentObj.comment,
+          comment: commentObj.comment,
           date: commentObj.date,
         }
       }
