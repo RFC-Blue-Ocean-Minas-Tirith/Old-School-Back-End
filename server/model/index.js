@@ -37,4 +37,5 @@ module.exports = {
     .then((res) => {return res})
     .catch((err) => console.log(err))
   },
+
 }

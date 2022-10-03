@@ -22,6 +22,8 @@ const userSchema = new Schema({
   password: String,
   aboutMe: String,
   favCreator: Array,
+  favoritedCount: Number,
+  isAdmin: {type: Boolean, default: false},
 });
 
 const videoSchema = new Schema({
@@ -31,28 +33,28 @@ const videoSchema = new Schema({
   username: { type: String, required: true, index: true },
   dateUploaded: Date,
   keywords: Array,
-  comments: {
+  comments: [{
     id: Number,
     author: String,
     date: Date,
-  },
+    comment: String,
+    isReported: {type: Boolean, default: false},
+  }],
   thumbnail: String,
   url: String,
   votes: {
     insightful: {
-      usernames: [Array],
-      count: Number,
+      usernames: Array,
     },
     funny: {
-      usernames: [Array],
-      count: Number,
+      usernames: Array,
     },
     informative: {
-      usernames: [Array],
-      count: Number,
+      usernames: Array,
     },
   },
   private: Boolean,
+  reported: {type: Boolean, default: false},
 });
 
 const blogSchema = new Schema({
