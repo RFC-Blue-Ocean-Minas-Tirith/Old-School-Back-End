@@ -22,6 +22,7 @@ const userSchema = new Schema({
   password: String,
   aboutMe: String,
   favCreator: Array,
+  favoritedCount: Number,
 });
 
 const videoSchema = new Schema({
