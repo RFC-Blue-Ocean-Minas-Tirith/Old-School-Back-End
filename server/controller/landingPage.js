@@ -46,6 +46,10 @@ module.exports = {
       })
       .catch((err) => console.log(err))
   },
+  updateFavorites: function (req, res) {
+    console.log('req', req);
+  }
+
 }
 
 
