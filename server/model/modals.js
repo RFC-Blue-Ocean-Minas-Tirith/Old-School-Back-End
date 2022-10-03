@@ -1,8 +1,9 @@
 var db = require('../db/db.js');
+var ObjectId = require('mongodb').ObjectID;
 
 module.exports = {
   insertComment: (commentObj) => {
-    return db.VideoData.updateOne( { url: commentObj.url },
+    return db.VideoData.updateOne( { _id: ObjectId(commentObj.id) },
       { $push : {
         comments: {
           author: commentObj.username,
