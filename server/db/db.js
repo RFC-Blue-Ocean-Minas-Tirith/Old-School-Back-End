@@ -23,6 +23,7 @@ const userSchema = new Schema({
   aboutMe: String,
   favCreator: Array,
   favoritedCount: Number,
+  isAdmin: {type: Boolean, default: false},
 });
 
 const videoSchema = new Schema({
@@ -36,6 +37,7 @@ const videoSchema = new Schema({
     id: Number,
     author: String,
     date: Date,
+    isReported: {type: Boolean, default: false},
   }],
   thumbnail: String,
   url: String,
@@ -54,6 +56,7 @@ const videoSchema = new Schema({
     },
   },
   private: Boolean,
+  reported: {type: Boolean, default: false},
 });
 
 const blogSchema = new Schema({
