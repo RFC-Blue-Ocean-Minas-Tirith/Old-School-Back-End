@@ -37,6 +37,7 @@ const videoSchema = new Schema({
     id: Number,
     author: String,
     date: Date,
+    comment: String,
     isReported: {type: Boolean, default: false},
   }],
   thumbnail: String,
