@@ -29,6 +29,7 @@ module.exports = {
   },
 
   getSpecUser: function (req, res) {
+    console.log(req.url);
     let username = req.url.slice(6, req.url.length)
     console.log(username);
     return models.findSpecUser( username )
