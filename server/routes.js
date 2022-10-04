@@ -22,6 +22,7 @@ router.get('/video/informative', landingpage.getVideoInformative);
 router.get('/video/recent', landingpage.getVideoRecent);
 router.get('/video/favorited', landingpage.getVideoFavorited);
 router.put('/video/vote', videopage.vote)
+router.put('/video/report', videopage.report);
 
 router.post('/video', controller.insertVideo);
 router.patch('/video', modals.insertComment);
