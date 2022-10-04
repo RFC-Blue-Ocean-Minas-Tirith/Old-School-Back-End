@@ -1,9 +1,9 @@
 var db = require('../db/db.js');
+var ObjectId = require('mongodb').ObjectID;
 
 module.exports = {
   vote: ({ vote, videoID, username }) => {
-    console.log(vote, typeof videoID);
-    return db.VideoData.findOneAndUpdate({ _id: (videoID) },
+    return db.VideoData.findOneAndUpdate({ _id: ObjectId(videoID) },
       {
         $push: {
           [`votes.${vote}.usernames`]: username
@@ -12,7 +12,7 @@ module.exports = {
   },
   report: ({ id, type }) => {
     if (type === 'comment') {
-      return db.VideoData.findOneAndUpdate({ _id: (id) },
+      return db.VideoData.findOneAndUpdate({ _id: ObjectId(id) },
         {
           $set: {
             [`comments[${id}].reported`]: true
