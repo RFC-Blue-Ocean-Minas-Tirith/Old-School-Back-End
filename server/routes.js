@@ -1,10 +1,8 @@
 var controller = require('./controller/index');
 var profileController = require('./controller/profilePage.js')
 var landingpage = require('./controller/landingPage');
-var profileController = require('./controller/profilePage.js')
 var videopage = require('./controller/videoPage.js');
 var modals = require('./controller/modals');
-var videopage = require('./controller/videoPage.js');
 var navbar = require('./controller/navbar.js');
 var router = require('express').Router();
 
@@ -42,5 +40,7 @@ router.patch('/video', modals.insertComment);
 router.get('/blog', controller.getBlog);
 router.get('/blog/user/:username', profileController.getBlogsByUser);
 router.post('/blog', controller.insertBlog);
+
+router.get('/flaggedComments', modals.getFlaggedComments);
 
 module.exports = router;
