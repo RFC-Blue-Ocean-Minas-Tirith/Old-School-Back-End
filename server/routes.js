@@ -31,7 +31,7 @@ router.put('/video/informative', landingpage.updateInformative);
 router.put('/video/informativex', landingpage.updateUnInformative);
 router.put('/userprofile', landingpage.favoriteUser);
 router.put('/userprofilex', landingpage.unfavoriteUser);
-router.put('video/vote', videopage.vote)
+router.put('/video/vote', videopage.vote)
 router.put('/video/report', videopage.report);
 
 router.post('/video', controller.insertVideo);
