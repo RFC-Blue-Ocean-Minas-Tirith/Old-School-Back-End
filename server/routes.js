@@ -1,13 +1,22 @@
 var controller = require('./controller/index');
+var profileController = require('./controller/profilePage.js')
 var landingpage = require('./controller/landingPage');
 var profileController = require('./controller/profilePage.js')
+var modals = require('./controller/modals');
+var videopage = require('./controller/videoPage.js');
+var navbar = require('./controller/navbar.js');
 var router = require('express').Router();
 
 
 router.get('/user', controller.getUser);
-router.post('/user', controller.insertUser);
+router.get('/user/:username', profileController.getSpecUser);
+router.post('/user', navbar.upsertUserCntl);
+
+router.put('/userprofile', profileController.favoriteUser);
+router.put('/userprofilex', profileController.unfavoriteUser);
 
 router.get('/video', controller.getVideo);
+router.get('/video/user/:username', profileController.getVideosByUser);
 router.get('/video/insightful', landingpage.getVideoInsightful);
 router.get('/video/funny', landingpage.getVideoFunny);
 router.get('/video/informative', landingpage.getVideoInformative);
@@ -22,9 +31,12 @@ router.put('/video/informativex', landingpage.updateUnInformative);
 router.put('/userprofile', landingpage.favoriteUser);
 router.put('/userprofilex', landingpage.unfavoriteUser);
 
+
 router.post('/video', controller.insertVideo);
+router.patch('/video', modals.insertComment);
 
 router.get('/blog', controller.getBlog);
+router.get('/blog/user/:username', profileController.getBlogsByUser);
 router.post('/blog', controller.insertBlog);
 
 module.exports = router;
