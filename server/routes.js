@@ -8,7 +8,7 @@ var navbar = require('./controller/navbar.js');
 var router = require('express').Router();
 
 
-// router.get('/user', controller.getUser);
+router.get('/user', controller.getUser);
 router.get('/user/:username', profileController.getSpecUser);
 router.post('/user', navbar.upsertUserCntl);
 
