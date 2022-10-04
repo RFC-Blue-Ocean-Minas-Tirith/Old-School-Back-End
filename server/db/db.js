@@ -14,15 +14,13 @@ db.once("open", function() {
 
 const userSchema = new Schema({
   objectID: Schema.Types.ObjectId,
-  firstName: String,
-  lastName: String,
-  profilePicture: String,
   username: { type: String, required: true, index: true },
   email: String,
-  password: String,
+  profilePicture: String,
   aboutMe: String,
   favCreator: Array,
   favoritedCount: Number,
+  uid: String,
   isAdmin: {type: Boolean, default: false},
 });
 
@@ -45,15 +43,12 @@ const videoSchema = new Schema({
   votes: {
     insightful: {
       usernames: Array,
-      count: Number,
     },
     funny: {
       usernames: Array,
-      count: Number,
     },
     informative: {
       usernames: Array,
-      count: Number,
     },
   },
   private: Boolean,
