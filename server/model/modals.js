@@ -16,4 +16,9 @@ module.exports = {
     .then((res) => console.log(res))
     .catch((err) => console.log(err))
   },
+  getFlaggedComments: () => {
+    return db.VideoData.find( { comments: { $elemMatch:{ isReported : false} } } )
+    .then((res) => {return res})
+    .catch((err) => console.log(err))
+  }
 }

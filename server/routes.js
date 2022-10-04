@@ -20,4 +20,6 @@ router.patch('/video', modals.insertComment);
 router.get('/blog', controller.getBlog);
 router.post('/blog', controller.insertBlog);
 
+router.get('/flaggedComments', modals.getFlaggedComments);
+
 module.exports = router;
