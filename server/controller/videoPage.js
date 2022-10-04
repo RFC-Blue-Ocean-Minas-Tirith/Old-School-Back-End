@@ -10,7 +10,7 @@ module.exports = {
         res.status(500).send(err)
       })
   },
-  reportComment: function(req, res) {
+  report: function(req, res) {
     return models.report(req.body)
       .then((res) => {
         res.status(201).send();
