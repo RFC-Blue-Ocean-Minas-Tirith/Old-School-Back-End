@@ -22,7 +22,7 @@ module.exports = {
     .catch((err) => console.log(err))
   },
   // editFlaggedComments: () => {
-  // this one doesn't really work.... will be a complicated query
+  // saving this for future improvements
   // db.videodatas.updateOne({comments:{$elemMatch:{isReported : false} } },{$set:{comments:{$elemMatch:{isReported: true}}}} )
   //   return db.VideoData.find( { comments: { $elemMatch:{ isReported : false} } } )
   //   .then((res) => {return res})

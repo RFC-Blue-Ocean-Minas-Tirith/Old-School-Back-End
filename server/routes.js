@@ -1,10 +1,8 @@
 var controller = require('./controller/index');
 var profileController = require('./controller/profilePage.js')
 var landingpage = require('./controller/landingPage');
-var profileController = require('./controller/profilePage.js')
 var videopage = require('./controller/videoPage.js');
 var modals = require('./controller/modals');
-var videopage = require('./controller/videoPage.js');
 var navbar = require('./controller/navbar.js');
 var router = require('express').Router();
 
