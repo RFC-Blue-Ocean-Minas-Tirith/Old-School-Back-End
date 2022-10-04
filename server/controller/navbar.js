@@ -9,5 +9,15 @@ module.exports = {
     .catch((err) => {
       console.log(err)
     })
+  },
+
+  getVideos: (req, res) => {
+    return models.findVideos(req.query.searchTerm)
+    .then((response) => {
+      res.status(200).send(response)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   }
 }

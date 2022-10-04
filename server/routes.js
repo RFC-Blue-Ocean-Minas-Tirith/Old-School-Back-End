@@ -17,6 +17,7 @@ router.put('/userprofile', profileController.favoriteUser);
 router.put('/userprofilex', profileController.unfavoriteUser);
 
 router.get('/video', controller.getVideo);
+router.get('/videos', navbar.getVideos);
 router.get('/video/user/:username', profileController.getVideosByUser);
 router.get('/video/insightful', landingpage.getVideoInsightful);
 router.get('/video/funny', landingpage.getVideoFunny);
