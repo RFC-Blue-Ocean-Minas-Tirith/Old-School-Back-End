@@ -1,15 +1,17 @@
 var controller = require('./controller/index');
 var profileController = require('./controller/profilePage.js')
 var landingpage = require('./controller/landingPage');
+var profileController = require('./controller/profilePage.js')
 var videopage = require('./controller/videoPage.js');
 var modals = require('./controller/modals');
 var videopage = require('./controller/videoPage.js');
+var navbar = require('./controller/navbar.js');
 var router = require('express').Router();
 
 
 router.get('/user', controller.getUser);
 router.get('/user/:username', profileController.getSpecUser);
-router.post('/user', controller.insertUser);
+router.post('/user', navbar.upsertUserCntl);
 
 router.put('/userprofile', profileController.favoriteUser);
 router.put('/userprofilex', profileController.unfavoriteUser);
@@ -21,7 +23,15 @@ router.get('/video/funny', landingpage.getVideoFunny);
 router.get('/video/informative', landingpage.getVideoInformative);
 router.get('/video/recent', landingpage.getVideoRecent);
 router.get('/video/favorited', landingpage.getVideoFavorited);
-router.put('/video/vote', videopage.vote)
+router.put('/video/insightful', landingpage.updateInsightful);
+router.put('/video/insightfulx', landingpage.updateUnInsightful);
+router.put('/video/funny', landingpage.updateFunny);
+router.put('/video/funnyx', landingpage.updateUnFunny);
+router.put('/video/informative', landingpage.updateInformative);
+router.put('/video/informativex', landingpage.updateUnInformative);
+router.put('/userprofile', landingpage.favoriteUser);
+router.put('/userprofilex', landingpage.unfavoriteUser);
+router.put('video/vote', videopage.vote)
 router.put('/video/report', videopage.report);
 
 router.post('/video', controller.insertVideo);
