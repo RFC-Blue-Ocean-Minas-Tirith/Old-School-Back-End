@@ -1,17 +1,17 @@
 var models = require('../model/index.js');
 
 module.exports = {
-  getUser: function(req, res) {
-    return models.findUser()
-    .then((data) => res.send(data))
-    .catch((err) => console.log(err))
-  },
+  // getUser: function(req, res) {
+  //   return models.findUser()
+  //   .then((data) => res.send(data))
+  //   .catch((err) => console.log(err))
+  // },
 
-  insertUser: function(req, res) {
-    return models.insertUser(req.body.params)
-    .then(() => res.sendStatus(201).end())
-    .catch((err) => console.log(err))
-  },
+  // insertUser: function(req, res) {
+  //   return models.insertUser(req.body.params)
+  //   .then(() => res.sendStatus(201).end())
+  //   .catch((err) => console.log(err))
+  // },
 
   getVideo: function(req, res) {
     return models.findVideos()

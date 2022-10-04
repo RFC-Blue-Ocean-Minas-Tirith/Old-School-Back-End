@@ -2,11 +2,13 @@ var controller = require('./controller/index');
 var landingpage = require('./controller/landingPage');
 var modals = require('./controller/modals');
 var videopage = require('./controller/videoPage.js');
+var navbar = require('./controller/navbar.js');
+
 var router = require('express').Router();
 
 
-router.get('/user', controller.getUser);
-router.post('/user', controller.insertUser);
+// router.get('/user', controller.getUser);
+router.post('/user', navbar.upsertUserCntl);
 
 router.get('/video', controller.getVideo);
 router.get('/video/insightful', landingpage.getVideoInsightful);
