@@ -15,6 +15,7 @@ router.post('/user', navbar.upsertUserCntl);
 
 router.put('/userprofile', profileController.favoriteUser);
 router.put('/userprofilex', profileController.unfavoriteUser);
+router.put('/userprofile/:username', profileController.updateBio);
 
 router.get('/video', controller.getVideo);
 router.get('/videos', navbar.getVideos);
