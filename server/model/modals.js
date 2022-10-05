@@ -46,5 +46,23 @@ module.exports = {
     })
     .then((res) => console.log(res))
     .catch((err) => console.log(err))
+  },
+  getFlaggedVideos: () => {
+    return db.VideoData.find( { reported: true }, { _id:1, title: 1, username:1 } )
+    .then((res) => {
+      console.log(res);
+      return res
+    })
+    .catch((err) => console.log(err))
+  },
+  removeFlaggedVideos: (commentObj) => {
+    return db.VideoData.deleteOne( { _id: ObjectId(commentObj.id) })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err))
+  },
+  keepFlaggedVideos: (commentObj) => {
+  return db.VideoData.updateOne({ _id: ObjectId(commentObj.id) }, { reported: false })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err))
   }
 }
