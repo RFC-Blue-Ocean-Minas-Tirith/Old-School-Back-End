@@ -26,5 +26,8 @@ module.exports = {
           }
         })
     }
+  },
+  getFavs: ({ user }) => {
+    return db.UserData.findOne({username: user});
   }
 }
