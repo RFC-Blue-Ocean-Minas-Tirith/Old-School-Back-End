@@ -4,11 +4,11 @@ var landingpage = require('./controller/landingPage');
 var profileController = require('./controller/profilePage.js')
 var videopage = require('./controller/videoPage.js');
 var modals = require('./controller/modals');
-var videopage = require('./controller/videoPage.js');
 var navbar = require('./controller/navbar.js');
 var router = require('express').Router();
 
 
+router.get('/user/favs', videopage.getFavs);
 router.get('/user', controller.getUser);
 router.get('/user/:username', profileController.getSpecUser);
 router.post('/user', navbar.upsertUserCntl);
