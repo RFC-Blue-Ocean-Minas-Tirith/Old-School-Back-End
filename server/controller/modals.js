@@ -6,4 +6,15 @@ module.exports = {
     .then(() => res.sendStatus(201).end())
     .catch((err) => console.log(err))
   },
+  getFlaggedComments: function(req, res) {
+    return models.getFlaggedComments()
+    .then((data) => res.send(data))
+    .catch((err) => console.log(err))
+  },
+  // future implementation
+  // editFlaggedComments: function(req, res) {
+  //   return models.getFlaggedComments()
+  //   .then(() => res.sendStatus(201).end())
+  //   .catch((err) => console.log(err))
+  // }
 }

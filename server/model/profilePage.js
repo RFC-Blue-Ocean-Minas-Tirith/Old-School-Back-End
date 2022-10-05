@@ -19,5 +19,9 @@ module.exports = {
   findSpecUser: (username) => {
     console.log(username);
     return db.UserData.findOne({ username: username })
+  },
+
+  updateBio: (username, bio) => {
+    return db.UserData.findOneAndUpdate({ username: username }, { $set: { aboutMe: bio }})
   }
 }
