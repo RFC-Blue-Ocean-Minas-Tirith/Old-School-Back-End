@@ -10,16 +10,19 @@ module.exports = {
         }
       })
   },
-  report: ({ id, type }) => {
+  report: ({ id, type, commentID }) => {
+    console.log(id, type, commentID);
     if (type === 'comment') {
-      return db.VideoData.findOneAndUpdate({ _id: ObjectId(id) },
+      return db.VideoData.updateOne({ _id: ObjectId(id) }, {
+        $set: {
+          "comments.$[comment].isReported": true
+        }
+      },
         {
-          $set: {
-            [`comments[${id}].reported`]: true
-          }
+          arrayFilters: [{ "comment._id": ObjectId(commentID) }]
         })
     } else {
-      return db.VideoData.findOneAndUPdate({ _id: (id) },
+      return db.VideoData.updateOne({ _id: ObjectId(id) },
         {
           $set: {
             reported: true
@@ -28,6 +31,6 @@ module.exports = {
     }
   },
   getFavs: ({ user }) => {
-    return db.UserData.findOne({username: user});
+    return db.UserData.findOne({ username: user });
   }
 }

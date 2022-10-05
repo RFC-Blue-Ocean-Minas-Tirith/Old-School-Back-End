@@ -33,13 +33,7 @@ module.exports = {
   getSpecUser: function (req, res) {
     let username = req.query.user;
     return models.findSpecUser( username )
-    .then((data) =>  res.status(200).send(data))
-    .catch((err) => res.send(err));
-  },
-
-  updateBio: function (req, res) {
-    return models.updateBio(req.body.user, req.body.bio)
-    .then((data) => res.status(200).send())
+    .then((data) => { console.log(data); res.status(200).send(data)})
     .catch((err) => res.send(err));
   }
 }

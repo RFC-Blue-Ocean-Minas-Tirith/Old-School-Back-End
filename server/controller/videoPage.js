@@ -12,10 +12,11 @@ module.exports = {
   },
   report: function(req, res) {
     return models.report(req.body)
-      .then((res) => {
+      .then((result) => {
         res.status(201).send();
       })
       .catch((err) => {
+        console.log(err);
         res.status(500).send(err)
       })
   },
