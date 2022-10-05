@@ -36,11 +36,6 @@ module.exports = {
     .catch((err) => console.log(err))
   },
   keepFlagged: (commentObj) => {
-  // db.videodatas.updateOne({comments:{$elemMatch:{isReported : false} } },{$set:{comments:{$elemMatch:{isReported: true}}}} )
-  //   return db.VideoData.find( { comments: { $elemMatch:{ isReported : false} } } )
-  //   .then((res) => {return res})
-  //   .catch((err) => console.log(err))
-  console.log(commentObj)
   return db.VideoData.updateOne({ _id: ObjectId(commentObj.id) }, {
     $set: {
       "comments.$[comment].isReported": false
