@@ -20,7 +20,6 @@ module.exports = {
       })
   },
   getFavs: function(req, res) {
-    console.log('favs params: ', req.query);
     return models.getFavs(req.query)
     .then((result) => {
       res.status(200).send(result.favCreator);
