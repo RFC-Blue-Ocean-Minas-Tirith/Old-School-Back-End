@@ -8,5 +8,16 @@ module.exports = {
       new: true,
       upsert: true
     })
+  },
+
+  findVideos: (query) => {
+    return db.VideoData.find({$or:
+      [
+        {title:{$regex: `${query}`, $options:'i'}},
+        {keywords:{$regex: `${query}`, $options:'i'}},
+        {description:{$regex: `${query}`, $options:'i'}},
+        {username:{$regex: `${query}`, $options:'i'}}
+      ]
+    })
   }
 }

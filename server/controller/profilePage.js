@@ -15,6 +15,7 @@ module.exports = {
 
   getVideosByUser: function( req, res ) {
     let username = req.url.slice(12, req.url.length)
+    username = unescape(username);
     return models.findVideosByUser( username )
     .then((data) =>
       res.status(200).send(data))
@@ -23,6 +24,7 @@ module.exports = {
 
   getBlogsByUser: function( req, res ) {
     let username = req.url.slice(11, req.url.length)
+    username = unescape(username);
     return models.findBlogsByUser( username )
     .then((data) => res.status(200).send(data))
     .catch((err) => res.send(err));
@@ -30,8 +32,15 @@ module.exports = {
 
   getSpecUser: function (req, res) {
     let username = req.url.slice(6, req.url.length)
+    username= unescape(username);
     return models.findSpecUser( username )
-    .then((data) => { console.log(data); res.status(200).send(data)})
+    .then((data) =>  res.status(200).send(data))
+    .catch((err) => res.send(err));
+  },
+
+  updateBio: function (req, res) {
+    return models.updateBio(req.body.user, req.body.bio)
+    .then((data) => res.status(200).send())
     .catch((err) => res.send(err));
   }
 }
