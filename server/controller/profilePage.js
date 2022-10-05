@@ -31,8 +31,7 @@ module.exports = {
   },
 
   getSpecUser: function (req, res) {
-    let username = req.url.slice(6, req.url.length)
-    username= unescape(username);
+    let username = req.query.user;
     return models.findSpecUser( username )
     .then((data) =>  res.status(200).send(data))
     .catch((err) => res.send(err));
