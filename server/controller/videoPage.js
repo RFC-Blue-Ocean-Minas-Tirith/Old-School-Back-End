@@ -23,7 +23,11 @@ module.exports = {
   getFavs: function(req, res) {
     return models.getFavs(req.query)
     .then((result) => {
-      res.status(200).send(result.favCreator);
+      if (result !== null) {
+        res.status(200).send(result.favCreator);
+      } else {
+        res.status(200).send([]);
+      }
     })
     .then((err) => {
       res.status(500).send(err);

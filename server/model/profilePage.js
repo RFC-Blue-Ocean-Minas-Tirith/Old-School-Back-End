@@ -2,6 +2,7 @@ var db = require('../db/db.js');
 
 module.exports = {
   updateFavorite: ( currentUser, user ) => {
+    console.log(currentUser, user);
     return db.UserData.findOneAndUpdate({ username: currentUser.username }, { $push: { favCreator: user } })
   },
   unFavorite: (currentUser, user ) => {
