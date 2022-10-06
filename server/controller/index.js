@@ -35,6 +35,13 @@ module.exports = {
     return models.insertBlog(req.body.params)
     .then(() => res.sendStatus(201).end())
     .catch((err) => console.log(err))
-  }
+  },
 
+  findAllsUsersForFavCreatorCntl: function(req, res) {
+    return models.findAllsUsersForFavCreator(req.query.favoriteUser)
+    .then((data) => {
+      res.status(200).send(data)
+    })
+    .catch((err) => res.send(err));
+  }
 };

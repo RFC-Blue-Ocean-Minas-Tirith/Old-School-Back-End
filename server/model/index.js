@@ -38,4 +38,10 @@ module.exports = {
     .catch((err) => console.log(err))
   },
 
+  findAllsUsersForFavCreator: (favCreator) => {
+    return db.UserData.find({ favCreator: favCreator })
+    .then((res) => {return res})
+    .catch((err) => console.log(err))
+  }
+
 }
