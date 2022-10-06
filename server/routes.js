@@ -43,5 +43,11 @@ router.get('/blog/user/:username', profileController.getBlogsByUser);
 router.post('/blog', controller.insertBlog);
 
 router.get('/flaggedComments', modals.getFlaggedComments);
+router.patch('/flaggedComments', modals.removeFlagged);
+router.patch('/flaggedCommentsKeep', modals.keepFlagged);
+
+router.get('/flaggedVideos', modals.getFlaggedVideos);
+router.patch('/flaggedVideos', modals.removeFlaggedVideos);
+router.patch('/flaggedVideosKeep', modals.keepFlaggedVideos);
 
 module.exports = router;

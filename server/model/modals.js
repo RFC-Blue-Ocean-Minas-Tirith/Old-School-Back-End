@@ -17,15 +17,52 @@ module.exports = {
     .catch((err) => console.log(err))
   },
   getFlaggedComments: () => {
-    return db.VideoData.find( { comments: { $elemMatch:{ isReported : true} } } )
-    .then((res) => {return res})
+    return db.VideoData.find( { comments: { $elemMatch:{ isReported : true} } }, { _id:1, title: 1, comments:1 } )
+    .then((res) => {
+      return res
+    })
     .catch((err) => console.log(err))
   },
-  // editFlaggedComments: () => {
-  // saving this for future improvements
-  // db.videodatas.updateOne({comments:{$elemMatch:{isReported : false} } },{$set:{comments:{$elemMatch:{isReported: true}}}} )
-  //   return db.VideoData.find( { comments: { $elemMatch:{ isReported : false} } } )
-  //   .then((res) => {return res})
-  //   .catch((err) => console.log(err))
-  // }
+  removeFlagged: (commentObj) => {
+    return db.VideoData.updateOne( { _id: ObjectId(commentObj.id) },
+      { $pull : {
+        'comments': {
+          comment: commentObj.comment,
+        }
+      }
+    }
+    )
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err))
+  },
+  keepFlagged: (commentObj) => {
+  return db.VideoData.updateOne({ _id: ObjectId(commentObj.id) }, {
+    $set: {
+      "comments.$[comment].isReported": false
+    }
+    },
+    {
+      arrayFilters: [{ "comment._id": ObjectId(commentObj.commentID) }]
+    })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err))
+  },
+  getFlaggedVideos: () => {
+    return db.VideoData.find( { reported: true }, { _id:1, title: 1, username:1 } )
+    .then((res) => {
+      console.log(res);
+      return res
+    })
+    .catch((err) => console.log(err))
+  },
+  removeFlaggedVideos: (commentObj) => {
+    return db.VideoData.deleteOne( { _id: ObjectId(commentObj.id) })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err))
+  },
+  keepFlaggedVideos: (commentObj) => {
+  return db.VideoData.updateOne({ _id: ObjectId(commentObj.id) }, { reported: false })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err))
+  }
 }
