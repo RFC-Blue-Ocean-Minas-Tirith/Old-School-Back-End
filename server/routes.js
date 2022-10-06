@@ -8,6 +8,7 @@ var router = require('express').Router();
 
 
 router.get('/user/favs', videopage.getFavs);
+router.get('/usersForFaveCreator', controller.findAllsUsersForFavCreatorCntl)
 router.get('/user', controller.getUser);
 router.get('/user/data', profileController.getSpecUser);
 router.post('/user', navbar.upsertUserCntl);
